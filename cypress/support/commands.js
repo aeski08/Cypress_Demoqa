@@ -41,9 +41,16 @@ Cypress.Commands.add("ClearAndSendKeys", (elementpath, value) => {  ///temizle v
 
 
 
-
 // -------------------- ui ------------------------------
 
 import utils from './utils';
 
 Cypress.Commands.add('generateFixture', utils.generataFixture)
+
+//Iframe
+Cypress.Commands.add("getIframe",(iFrame)=>{
+    cy.get(iFrame)
+    .its('0.contentDocument.body')
+    .should('be.visible')
+    .then(cy.wrap)
+    })
