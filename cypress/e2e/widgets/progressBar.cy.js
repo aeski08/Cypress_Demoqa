@@ -13,39 +13,39 @@ describe('progress bar', () => {
         cy.get('#startStopButton').click()
         cy.wait(3000)
         cy.get('#startStopButton').click()
-
+        cy.get('#resetButton').should('not.exist')
 
         cy.get('.progress-bar').invoke('attr', 'aria-valuenow').then(input => {
-            cy.log(input)
+            cy.expect(input > 0).to.be.true
         })
 
         cy.get('#startStopButton').click()
         cy.wait(3000)
         cy.get('#startStopButton').click()
-        
-        const el = cy.get('.progress-bar').invoke('attr', 'aria-valuenow')
-        cy.log("out of : "+el)
+
+        // const el = cy.get('.progress-bar').invoke('attr', 'aria-valuenow')
+        // cy.log("out of : "+el)
         cy.get('.progress-bar').invoke('attr', 'aria-valuenow').then(input => {
             cy.wrap(parseInt(input)).should('be.above', 25)
         })
-        
+
         // way 1
         cy.get('.progress-bar').invoke('css', 'background-color').then(input => {
             expect(input).to.equal('rgb(23, 162, 184)')
         })
         // way 2
         cy.get('.progress-bar').should('have.css', 'background-color', 'rgb(23, 162, 184)')  //mavi renk
-        
+
         cy.get('#startStopButton').click()
         cy.wait(3000)
         cy.get('#startStopButton').should('not.exist') // reset oldu
-        
+
         cy.get('.progress-bar').invoke('css', 'background-color').then(input => {
-             cy.wrap(input).should('equal', 'rgb(40, 167, 69)')
+            cy.wrap(input).should('equal', 'rgb(40, 167, 69)')
         })
         cy.get('#resetButton').should('exist')
-        
-        cy.get('.progress-bar')   .should('have.css', 'background-color', 'rgb(40, 167, 69)')  // yesil renk
+
+        cy.get('.progress-bar').should('have.css', 'background-color', 'rgb(40, 167, 69)')  // yesil renk
 
 
 

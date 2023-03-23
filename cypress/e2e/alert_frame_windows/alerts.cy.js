@@ -47,6 +47,8 @@ describe('', () => {
             cy.wrap(input).should('have.text','You selected Cancel')
         })
     })
+
+    
     it('click button alert confirm box ok', () => {
 
         cy.get(alert3).click()
