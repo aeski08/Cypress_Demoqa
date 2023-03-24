@@ -34,13 +34,13 @@ describe('modal dialogs', () => {
       .get('.modal-content')
       .invoke('outerWidth')
       .then((name) => {
-        name.toString().replace('[^0-9]', '');
-        cy.log(name);
-        cy.wrap(name).as('smallWidth')
-        return name;
+        // name.toString().replace('[^0-9]', '');
+        cy.wrap(name.toString().replace('[^0-9]', '')).as('smallWidth')
+        // cy.wrap(name).as('smallWidth')
+        // return name;
       });
 
-    cy.log('@smallWidth');
+    // cy.log('@smallWidth');
     cy.get('#closeSmallModal').click();
 
     cy.get('#showLargeModal').click();
@@ -49,12 +49,23 @@ describe('modal dialogs', () => {
       .get('.modal-content')
       .invoke('outerWidth')
       .then((name) => {
-        name.toString().replace('[^0-9]', '');
-        cy.log(name);
-        cy.wrap(name).as('largeWidth')
-        return name;
+        // name.toString().replace('[^0-9]', '');
+        // cy.log(name);
+        // cy.wrap(name).as('largeWidth')
+        // return name;
+        cy.wrap(name.toString().replace('[^0-9]', '')).as('largeWidth')
+
       });
-    cy.log('@largeWidth');
-    // cy.should(largeWidth > smallWidth);
+    //cy.log('@largeWidth');
+    //  cy.should(largeWidth > smallWidth);
+
+    cy.get('@smallWidth').then(small => {
+
+      cy.get('@largeWidth').then(large => {
+
+        expect(small < large).to.be.true
+      })
+
+    })
   });
 });
