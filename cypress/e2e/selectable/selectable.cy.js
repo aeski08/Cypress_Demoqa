@@ -1,57 +1,57 @@
 describe('Selectable',()=>{
 
-   beforeEach(()=>{
-    cy.visit(Cypress.env('demoqaURL'))
-    cy.get('.category-cards > :nth-child(5)').click()
-    cy.get(':nth-child(5) > .element-list > .menu-list > #item-1').click()
+    beforeEach(() => {
+        cy.visit('https://demoqa.com/')
+        cy.get('.category-cards > :nth-child(5)').click()
+        cy.get(':nth-child(5) > .element-list > .menu-list > #item-1').click()
 
-   })
+    })
 
     //List
     it('Selectable list', () => {
-       
+
        cy.get('#demo-tab-list').click({force:true}) 
 
-       //Opsiyonalri iceren listemizi tikliyoruz
-       // 1. opsiyon
+        //Opsiyonalri iceren listemizi tikliyoruz
+        // 1. opsiyon
        cy.xpath('//*[@id="demo-tabpane-list"]//..').each(data=>{
         if(data.text()=='Cras justo odio'){
-            data.click()
-        }
-       })
+                data.click()
+            }
+        })
        cy.get('#verticalListContainer > .active').invoke('attr','class').then(input=>{
-        cy.expect(input).to.be.eql('mt-2 list-group-item active list-group-item-action')
-       })
+            cy.expect(input).to.be.eql('mt-2 list-group-item active list-group-item-action')
+        })
 
-       //2. Opsiyon
+        //2. Opsiyon
        cy.xpath('//*[@id="demo-tabpane-list"]//..').each(data=>{
         if(data.text()=='Dapibus ac facilisis in'){
-            data.click()
-        }
-       })
+                data.click()
+            }
+        })
        cy.get('#verticalListContainer > .active').invoke('attr','class').then(input=>{
-        cy.expect(input).to.be.eql('mt-2 list-group-item active list-group-item-action')
-       })
+            cy.expect(input).to.be.eql('mt-2 list-group-item active list-group-item-action')
+        })
 
-       //3.Opsiyon
+        //3.Opsiyon
        cy.xpath('//*[@id="demo-tabpane-list"]//..').each(data=>{
         if(data.text()=='Morbi leo risus'){
-            data.click()
-        }
-       })       
+                data.click()
+            }
+        })
        cy.get('#verticalListContainer > .active').invoke('attr','class').then(input=>{
-        cy.expect(input).to.be.eql('mt-2 list-group-item active list-group-item-action')
-       })
+            cy.expect(input).to.be.eql('mt-2 list-group-item active list-group-item-action')
+        })
 
-       //4. Opsiyon
+        //4. Opsiyon
        cy.xpath('//*[@id="demo-tabpane-list"]//..').each(data=>{
         if(data.text()=='Porta ac consectetur ac'){
-            data.click()
-        }
-       })
+                data.click()
+            }
+        })
        cy.get('#verticalListContainer > .active').invoke('attr','class').then(input=>{
-        cy.expect(input).to.be.eql('mt-2 list-group-item active list-group-item-action')
-       })
+            cy.expect(input).to.be.eql('mt-2 list-group-item active list-group-item-action')
+        })
 
     });
 
@@ -149,6 +149,6 @@ describe('Selectable',()=>{
         })
 
 
-        
+
     });
 })
