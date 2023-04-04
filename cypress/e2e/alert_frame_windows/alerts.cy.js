@@ -32,7 +32,10 @@ describe('', () => {
             cy.log("printed alert: "+t)
         })
     })
-    it('click button alert will appear after 5 seconds cancel', () => {
+
+
+
+    it('click button alert confirm box cancel', () => {
 
         cy.get(alert3).click()
 
@@ -44,7 +47,9 @@ describe('', () => {
             cy.wrap(input).should('have.text','You selected Cancel')
         })
     })
-    it('click button alert will appear after 5 seconds ok', () => {
+
+    
+    it('click button alert confirm box ok', () => {
 
         cy.get(alert3).click()
 
@@ -52,7 +57,9 @@ describe('', () => {
             cy.wrap(input).should('have.text','You selected Ok')
         })
     })
-    it.only('click button alert will appear after 5 seconds', () => {
+
+
+    it('click button alert will appear after 5 seconds', () => {
         
         
         cy.window().then(win=>{
