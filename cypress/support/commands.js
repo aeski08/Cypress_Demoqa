@@ -47,6 +47,31 @@ import utils from './utils';
 
 Cypress.Commands.add('generateFixture', utils.generataFixture)
 
+
+
+Cypress.Commands.add("dragTo", { prevSubject: "element" }, (subject, targetEl) => {
+    const dataTransfer = new DataTransfer();
+    cy.get(subject).trigger('dragstart', {
+      dataTransfer
+    });
+    cy.get(targetEl).trigger('drop', {
+      dataTransfer
+    })
+  }
+  );
+  
+  
+  Cypress.Commands.add('dragss', (from, to) => {
+    const dataTransfer = new DataTransfer();
+  
+    cy.get(from).trigger('dragstart', {
+      dataTransfer
+    });
+    cy.get(to).trigger('drop', {
+      dataTransfer
+    })
+  })
+
 //Iframe
 Cypress.Commands.add("getIframe",(iFrame)=>{
     cy.get(iFrame)
@@ -54,3 +79,4 @@ Cypress.Commands.add("getIframe",(iFrame)=>{
     .should('be.visible')
     .then(cy.wrap)
     })
+
