@@ -12,14 +12,8 @@ describe('trigger', () => {
     });
 
 
-    it('2', () => {
-        cy.visit('https://the-internet.herokuapp.com/drag_and_drop')
 
-           cy.get('#column-a').dragTo('#column-b')
-
-    });
-
-    it('drag and drop', () => {
+    it('drag and drop 1', () => {
         cy.visit('https://the-internet.herokuapp.com/drag_and_drop')
         const dataTransfer = new DataTransfer();
 
@@ -30,21 +24,32 @@ describe('trigger', () => {
             dataTransfer
         })
     });
-    it('23', () => {
+
+    
+    it('drag and drop 2', () => {
+        cy.visit('https://the-internet.herokuapp.com/drag_and_drop')
+
+           cy.get('#column-a').dragTo('#column-b')
+
+    });
+    
+    it('drag and drop 3', () => {
         cy.visit('https://the-internet.herokuapp.com/drag_and_drop')
 
         cy.dragss('#column-a','#column-b')
     });
 
-    it('3', () => {
+    it('hover 1', () => {
+        cy.visit('https://www.amazon.co.uk/')
+        cy.get('#sp-cc-rejectall-link').click()
+        cy.get("#nav-link-accountList").trigger('mouseover')
+    });
+   
+    it('hover 2', () => {
         cy.visit("https://www.automationteststore.com/")
         cy.get("[title='Add to Cart']").first().realHover()
         cy.get("[title='Add to Cart']").first().should('css', 'background-color', 'rgb(216, 66, 14)')
     });
 
-    it('amazon', () => {
-        cy.visit('https://www.amazon.co.uk/')
-        cy.get('#sp-cc-rejectall-link').click()
-        cy.get("#nav-link-accountList").trigger('mouseover')
-    });
+  
 })
